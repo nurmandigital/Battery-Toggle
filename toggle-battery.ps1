@@ -161,6 +161,14 @@ Show-Banner
 Write-Host "  [OK] Operasi selesai!" -ForegroundColor Green
 Write-Host ""
 Show-Status
+
+$afterStatus = (Get-PnpDevice -InstanceId $batteryDevice.InstanceId -ErrorAction SilentlyContinue).Status
+if ($afterStatus -eq "OK") {
+    Write-Host "  Tips: ketik battery-toggle -Disable untuk memutus baterai" -ForegroundColor DarkCyan
+} else {
+    Write-Host "  Tips: ketik battery-toggle -Enable untuk menyambung kembali" -ForegroundColor DarkCyan
+}
+
 Write-Host ""
 Write-Host "  Created with <3 by Nurman Digital" -ForegroundColor DarkGray
 Write-Host "  github.com/nurmandigital" -ForegroundColor DarkGray
