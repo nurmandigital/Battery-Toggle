@@ -2,7 +2,24 @@
 
 **by Nurman Digital**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Script PowerShell untuk memutus & menyambung koneksi baterai laptop secara software. Ideal untuk laptop yang sering dicas terus-menerus — baterai bisa "dicabut" tanpa colok-lepas fisik.
+
+---
+
+## Instalasi
+
+```powershell
+# Clone repo
+git clone https://github.com/nurmandigital/Battery-Toggle.git
+cd Battery-Toggle
+
+# Jalankan installer (sebagai Administrator)
+.\install.ps1
+```
+
+Atau unduh dari [GitHub Releases](https://github.com/nurmandigital/Battery-Toggle/releases).
 
 ---
 
@@ -10,7 +27,14 @@ Script PowerShell untuk memutus & menyambung koneksi baterai laptop secara softw
 
 ```powershell
 # Run sebagai Administrator
-.\toggle-battery.ps1           # Toggle otomatis (putus/sambung)
+toggle-battery.ps1           # Toggle otomatis (putus/sambung)
+toggle-battery.ps1 -Disable  # Paksa putus baterai
+toggle-battery.ps1 -Enable   # Paksa sambung baterai
+```
+
+Jika dari folder repo (belum install):
+```powershell
+.\toggle-battery.ps1           # Toggle otomatis
 .\toggle-battery.ps1 -Disable  # Paksa putus baterai
 .\toggle-battery.ps1 -Enable   # Paksa sambung baterai
 ```
@@ -54,4 +78,4 @@ Script PowerShell untuk memutus & menyambung koneksi baterai laptop secara softw
 
 ## Lisensi
 
-Open source. Pakai bebas, modifikasi bebas.
+[MIT](LICENSE) &copy; 2026 Nurman Digital
