@@ -88,9 +88,9 @@ Show-Banner
 Show-Status
 
 Write-Host "  Cara pakai:" -ForegroundColor DarkCyan
-Write-Host "    .\toggle-battery.ps1           Toggle otomatis" -ForegroundColor DarkGray
-Write-Host "    .\toggle-battery.ps1 -Disable  Paksa putus baterai" -ForegroundColor DarkGray
-Write-Host "    .\toggle-battery.ps1 -Enable   Paksa sambung baterai" -ForegroundColor DarkGray
+Write-Host "    battery-toggle           Toggle otomatis" -ForegroundColor DarkGray
+Write-Host "    battery-toggle -Disable  Paksa putus baterai" -ForegroundColor DarkGray
+Write-Host "    battery-toggle -Enable   Paksa sambung baterai" -ForegroundColor DarkGray
 Write-Host ""
 
 switch ($Action) {
@@ -161,14 +161,6 @@ Show-Banner
 Write-Host "  [OK] Operasi selesai!" -ForegroundColor Green
 Write-Host ""
 Show-Status
-
-$afterStatus = (Get-PnpDevice -InstanceId $batteryDevice.InstanceId -ErrorAction SilentlyContinue).Status
-if ($afterStatus -eq "OK") {
-    Write-Host "  Tips: ketik battery-toggle -Disable untuk memutus baterai" -ForegroundColor DarkCyan
-} else {
-    Write-Host "  Tips: ketik battery-toggle -Enable untuk menyambung kembali" -ForegroundColor DarkCyan
-}
-
 Write-Host ""
 Write-Host "  Created with <3 by Nurman Digital" -ForegroundColor DarkGray
 Write-Host "  github.com/nurmandigital" -ForegroundColor DarkGray
