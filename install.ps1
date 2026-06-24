@@ -3,6 +3,7 @@
 $sourceFile = Join-Path $PSScriptRoot "toggle-battery.ps1"
 $installDir = "$env:ProgramFiles\NurmanDigital\BatteryToggle"
 $targetFile = Join-Path $installDir "toggle-battery.ps1"
+$wrapperFile = Join-Path $installDir "battery-toggle.cmd"
 
 Write-Host "  +------------------------------------------+" -ForegroundColor Cyan
 Write-Host "  |  NURMAN DIGITAL - Battery Toggle v1.0    |" -ForegroundColor Cyan
@@ -23,6 +24,13 @@ if (-not (Test-Path $installDir)) {
 
 Copy-Item -Path $sourceFile -Destination $targetFile -Force
 Write-Host "  [+] toggle-battery.ps1 disalin ke $installDir" -ForegroundColor Green
+
+$wrapperContent = @'
+@echo off
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "%~dp0toggle-battery.ps1" %*
+'@
+Set-Content -Path $wrapperFile -Value $wrapperContent -Encoding ASCII
+Write-Host "  [+] battery-toggle.cmd dibuat di $installDir" -ForegroundColor Green
 
 $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
 $installDirUser = [Environment]::GetFolderPath("UserProfile") + "\AppData\Local\NurmanDigital\BatteryToggle"
@@ -45,11 +53,8 @@ Write-Host "  +------------------------------------------+" -ForegroundColor Gre
 Write-Host "  |  INSTALLASI SELESAI!                      |" -ForegroundColor Green
 Write-Host "  +------------------------------------------+" -ForegroundColor Green
 Write-Host ""
-Write-Host "  Cara pakai setelah PATH aktif:" -ForegroundColor Cyan
-Write-Host "    toggle-battery.ps1           Toggle otomatis" -ForegroundColor DarkGray
-Write-Host "    toggle-battery.ps1 -Disable  Paksa putus baterai" -ForegroundColor DarkGray
-Write-Host "    toggle-battery.ps1 -Enable   Paksa sambung baterai" -ForegroundColor DarkGray
-Write-Host ""
-Write-Host "  Atau jalankan langsung:" -ForegroundColor Cyan
-Write-Host "    & '$targetFile'" -ForegroundColor DarkGray
+Write-Host "  Setelah restart PowerShell, bisa pake dari mana aja:" -ForegroundColor Cyan
+Write-Host "    battery-toggle           Toggle otomatis" -ForegroundColor DarkGray
+Write-Host "    battery-toggle -Disable  Paksa putus baterai" -ForegroundColor DarkGray
+Write-Host "    battery-toggle -Enable   Paksa sambung baterai" -ForegroundColor DarkGray
 Write-Host ""
