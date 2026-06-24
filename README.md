@@ -56,6 +56,27 @@ Sebelum install (dari folder repo):
 
 ---
 
+## Uninstall
+
+```powershell
+# Buka folder repo / download ulang lalu
+.\uninstall.ps1
+```
+
+Atau hapus manual:
+```powershell
+# PowerShell sebagai Administrator
+Remove-Item -Path "$env:ProgramFiles\NurmanDigital\BatteryToggle" -Recurse -Force -ErrorAction SilentlyContinue
+[Environment]::SetEnvironmentVariable("Path", (([Environment]::GetEnvironmentVariable("Path", "User") -split ";" | Where-Object { $_ -ne "$env:ProgramFiles\NurmanDigital\BatteryToggle" }) -join ";"), "User")
+```
+
+Dua-duanya akan:
+- Hapus folder `C:\Program Files\NurmanDigital\BatteryToggle\`
+- Hapus PATH entry
+- File project tetap ada di folder repo
+
+---
+
 ## Syarat & Peringatan
 
 | Syarat | Keterangan |
