@@ -162,6 +162,11 @@ Write-Host "  [OK] Operasi selesai!" -ForegroundColor Green
 Write-Host ""
 Show-Status
 Write-Host ""
+Write-Host "  Cara pakai:" -ForegroundColor DarkCyan
+Write-Host "    battery-toggle           Toggle otomatis" -ForegroundColor DarkGray
+Write-Host "    battery-toggle -Disable  Paksa putus baterai" -ForegroundColor DarkGray
+Write-Host "    battery-toggle -Enable   Paksa sambung baterai" -ForegroundColor DarkGray
+Write-Host ""
 Write-Host "  Created with <3 by Nurman Digital" -ForegroundColor DarkGray
 Write-Host "  github.com/nurmandigital" -ForegroundColor DarkGray
 Write-Host ""
