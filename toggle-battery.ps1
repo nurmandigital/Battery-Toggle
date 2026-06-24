@@ -163,5 +163,5 @@ Write-Host ""
 Show-Status
 Write-Host ""
 Write-Host "  Created with <3 by Nurman Digital" -ForegroundColor DarkGray
-Write-Host "  github.com/nurman-digital" -ForegroundColor DarkGray
+Write-Host "  github.com/nurmandigital" -ForegroundColor DarkGray
 Write-Host ""
